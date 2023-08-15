@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus GoBGP Exporter
+Requires=gobgpd.service
+After=gobgpd.service
+
+[Service]
+User=prometheus-gobgp-exporter
+EnvironmentFile=/etc/default/prometheus-gobgp-exporter
+ExecStart=/usr/sbin/gobgp_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
